@@ -18,7 +18,7 @@ namespace IotHubDevice.repository
         private static string connectionString = "HostName=iotdevicehubltimind.azure-devices.net;SharedAccessKeyName=iothubowner;SharedAccessKey=vPtYa5UnQKyJcNkSZhpkwqR8h30pN/LaJkEju74hmlY=";
         public static RegistryManager? registryManager;
         public static DeviceClient? client = null;
-        public static string myDeviceConnection = "HostName=iotdevicehubltimind.azure-devices.net;DeviceId=iotdevice1;SharedAccessKey=7cbM5rmIueUN37CLMAlo+sYVcbFu1mfqwMtI3Vuscsc=";
+        public static string myDeviceConnection = "HostName=iotdevicehubltimind.azure-devices.net;DeviceId=iotdevice1;SharedAccessKey=ERusWEqTQeU5TPzsjPQ4Tsr1+wYoo0mWG0j6Oz/iDrE=";
         
         public static async Task SendMessage(string deviceName)
         {
