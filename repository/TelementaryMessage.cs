@@ -20,7 +20,7 @@ namespace IotHubDevice.repository
         public static DeviceClient? client = null;
         public static string myDeviceConnection = "HostName=iotdevicehubltimind.azure-devices.net;DeviceId=iotdevice1;SharedAccessKey=ERusWEqTQeU5TPzsjPQ4Tsr1+wYoo0mWG0j6Oz/iDrE=";
         
-        public static async Task SendMessage(string deviceName)
+        public static async Task<string> SendMessage(string deviceName)
         {
             try
             {
@@ -59,7 +59,9 @@ namespace IotHubDevice.repository
 
                      await client.SendEventAsync(message);
                     Console.WriteLine("{0} > Sending message: {1}", DateTime.Now, messageString);
+                    var teleresponse=messageString;
                     await Task.Delay(1000 * 10);
+                    return teleresponse;
 
                 }
 
