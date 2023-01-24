@@ -30,21 +30,55 @@ namespace IotHubDevice.repository
                 TwinCollection reportedprop;
                 reportedprop = device.Properties.Reported;
                 client = DeviceClient.CreateFromConnectionString(myDeviceConnection,Microsoft.Azure.Devices.Client.TransportType.Mqtt);
-                while(true)
-                {
-                    var telementry = new
-                    {
-                        temprature = reportedprop["temprature"],
-                        pressure = reportedprop["pressure"],
-                        accuracy = reportedprop["accuracy"],
+                
+                double minTemperature = 20;
+                double minHumidity = 60;
+                Random rand = new Random();
 
+                while (true)
+                {
+                    double currentTemperature = minTemperature + rand.NextDouble() * 15;
+                    double currentHumidity = minHumidity + rand.NextDouble() * 20;
+
+                    // Create JSON message  
+
+                    var telemetryDataPoint = new
+                    {
+
+                        temperature = currentTemperature,
+                        humidity = currentHumidity
                     };
-                    var telementryString = JsonConvert.SerializeObject(telementry);
-                    var message = new Microsoft.Azure.Devices.Client.Message(Encoding.ASCII.GetBytes(telementryString));
-                    await client.SendEventAsync(message);
-                    Console.WriteLine("{0}>sending message:{1}", DateTime.Now, telementryString);
-                    await Task.Delay(1000);
+
+                    string messageString = "";
+
+
+
+                    messageString = JsonConvert.SerializeObject(telemetryDataPoint);
+
+                    var message = new Microsoft.Azure.Devices.Client.Message(Encoding.ASCII.GetBytes(messageString));
+
+                     await client.SendEventAsync(message);
+                    Console.WriteLine("{0} > Sending message: {1}", DateTime.Now, messageString);
+                    await Task.Delay(1000 * 10);
+
                 }
+
+                // commented old code
+                // while(true)
+                // {
+                //     var telementry = new
+                //     {
+                //         temprature = reportedprop["temprature"],
+                //         pressure = reportedprop["pressure"],
+                //         accuracy = reportedprop["accuracy"],
+
+                //     };
+                //     var telementryString = JsonConvert.SerializeObject(telementry);
+                //     var message = new Microsoft.Azure.Devices.Client.Message(Encoding.ASCII.GetBytes(telementryString));
+                //     await client.SendEventAsync(message);
+                //     Console.WriteLine("{0}>sending message:{1}", DateTime.Now, telementryString);
+                //     await Task.Delay(1000);
+                // }
             }
             catch(Exception e)
             {
