@@ -1,0 +1,19 @@
+apiVersion : apps/v1
+	kind: Deployment
+	metadata:
+	  name: Devicekuberregistry 
+	spec:
+	  replicas: 1
+	  selector:
+	    matchLabels:
+	      app: Devicekuberregistry
+	  template:
+	    metadata:
+	      labels:
+	        app: Devicekuberregistry 
+	    spec:
+	      containers:
+	        - name: Devicekuberregistry 
+	          image: devicedockerregistry.azurecr.io/iotdevicehubmain
+	          ports:
+	          - containerPort: 80
