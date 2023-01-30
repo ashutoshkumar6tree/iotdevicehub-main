@@ -12,7 +12,7 @@ namespace IotHubDevice.repository
 {
     public class IotDeviceProperties
     {
-        private static string connectionString = "HostName=iotdevicehubltimind.azure-devices.net;SharedAccessKeyName=iothubowner;SharedAccessKey=vPtYa5UnQKyJcNkSZhpkwqR8h30pN/LaJkEju74hmlY=";
+        private static string connectionString = "HostName=ashuiothubnew.azure-devices.net;SharedAccessKeyName=iothubowner;SharedAccessKey=7M9PIPold7W7pfqyz4IboT/vzLvzGDEGvmVkJO76iyM=";
         public static RegistryManager registryManager = RegistryManager.CreateFromConnectionString(connectionString);
         public static DeviceClient? client = null;
         public static string myDeviceConnection = "HostName=iotdevicehubltimind.azure-devices.net;DeviceId=iotdevice1;SharedAccessKey=ERusWEqTQeU5TPzsjPQ4Tsr1+wYoo0mWG0j6Oz/iDrE=";
