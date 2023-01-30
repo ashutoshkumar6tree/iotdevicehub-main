@@ -1,10 +1,10 @@
 apiVersion: v1
 	kind: Service
 	metadata:
-	    name: Devicekuberregistry
+	    name: Devicekubercluster
 	spec:
 	    type: LoadBalancer
 	    ports:
 	    - port: 80 
 	    selector:
-	        app: Devicekuberregistry
+	        app: Devicekubercluster
